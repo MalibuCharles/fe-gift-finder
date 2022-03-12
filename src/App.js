@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Product from "./component/Product";
+import Question from "./component/Question";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [isFirst, setIsFirst] = useState(localStorage.getItem("isfirst") || 'true');
+  const [isProduct, setIsProduct] = useState(localStorage.getItem("isproduct") || 'false');
+  // const [gender, setGender] = useState();
+  // const [age, setAge] = useState();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {isProduct === 'true' ? (
+        <Product isProduct={isProduct} setIsProduct={setIsProduct} />
+      ) : (
+        <Question
+          isProduct={isProduct}
+          setIsProduct={setIsProduct}
+          isFirst={isFirst}
+          setIsFirst={setIsFirst}
+        />
+      )}
     </div>
   );
 }
