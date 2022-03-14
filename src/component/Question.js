@@ -6,6 +6,8 @@ export default function Question({
   isProduct,
   isFirst,
   setIsFirst,
+  setAge,
+  age,
 }) {
   
 
@@ -54,6 +56,8 @@ export default function Question({
                 onClick={() => {
                   setIsProduct('true');
                   localStorage.setItem("isproduct", isProduct);
+                  setAge(0);
+                  localStorage.setItem("age",age)
                 }}
               >
                 pre-teen(6-12)
@@ -64,6 +68,8 @@ export default function Question({
                 onClick={() => {
                   setIsProduct('true');
                   localStorage.setItem("isproduct", isProduct);
+                  setAge(1);
+                  localStorage.setItem("age",age)
                 }}
               >
                 teen(13-19)
@@ -74,6 +80,8 @@ export default function Question({
                 onClick={() => {
                   setIsProduct('true');
                   localStorage.setItem("isproduct", isProduct);
+                  setAge(2);
+                  localStorage.setItem("age",age)
                 }}
               >
                 young-adult(20-30)
@@ -84,6 +92,8 @@ export default function Question({
                 onClick={() => {
                   setIsProduct('true');
                   localStorage.setItem("isproduct", isProduct);
+                  setAge(3);
+                  localStorage.setItem("age",age)
                 }}
               >
                 adult(30-infinty)
