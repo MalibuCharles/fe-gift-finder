@@ -8,6 +8,7 @@ function App() {
   const [isProduct, setIsProduct] = useState(localStorage.getItem("isproduct") || 'false');
   // const [gender, setGender] = useState();
   // const [age, setAge] = useState();
+  
 
   return (
     <div>
