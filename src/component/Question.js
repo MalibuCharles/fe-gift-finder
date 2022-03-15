@@ -1,5 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import Button from '@mui/material/Button';
+import '../App.css'
+
 
 export default function Question({
   setIsProduct,
@@ -8,8 +11,10 @@ export default function Question({
   setIsFirst,
   setAge,
   age,
-}) {
-  
+}) 
+
+
+{
 
   //styling
   const quesBar = {
@@ -19,30 +24,36 @@ export default function Question({
   };
 
   return (
-    <div>
-      {isFirst === 'true' ? (
+    <div className="back-image">
+        {isFirst === 'true' ? (
         <section style={quesBar}>
           <h1>Q1: What's their gender?</h1>
           <div>
             <div>
-              <button
+              <Button
+                                 variant="contained"
+                                 style={{backgroundColor: "hotPink", marginTop: "10px"}}
+               
                 onClick={() => {
                   setIsFirst('false');
                   localStorage.setItem("isfirst", 'false');
                 }}
               >
                 male
-              </button>
+              </Button>
             </div>
             <div>
-              <button
+              <Button
+                                variant="contained"
+                                style={{backgroundColor: "hotPink", marginTop: "10px"}}
+              
                 onClick={() => {
                   setIsFirst('false');
                   localStorage.setItem("isfirst", 'false');
                 }}
               >
                 female
-              </button>
+              </Button>
             </div>
           </div>
         </section>
@@ -52,7 +63,10 @@ export default function Question({
           <h1>Q2: What's their age?</h1>
           <div>
             <div>
-              <button
+              <Button
+                                variant="contained"
+                                style={{backgroundColor: "hotPink", marginTop: "10px"}}
+              
                 onClick={() => {
                   setIsProduct('true');
                   localStorage.setItem("isproduct", isProduct);
@@ -61,10 +75,13 @@ export default function Question({
                 }}
               >
                 pre-teen(6-12)
-              </button>
+              </Button>
             </div>
             <div>
-              <button
+              <Button
+                                variant="contained"
+                                style={{backgroundColor: "hotPink", marginTop: "10px"}}
+              
                 onClick={() => {
                   setIsProduct('true');
                   localStorage.setItem("isproduct", isProduct);
@@ -73,10 +90,13 @@ export default function Question({
                 }}
               >
                 teen(13-19)
-              </button>
+              </Button>
             </div>
             <div>
-              <button
+              <Button
+                                variant="contained"
+                                style={{backgroundColor: "hotPink", marginTop: "10px"}}
+              
                 onClick={() => {
                   setIsProduct('true');
                   localStorage.setItem("isproduct", isProduct);
@@ -85,10 +105,13 @@ export default function Question({
                 }}
               >
                 young-adult(20-30)
-              </button>
+              </Button>
             </div>
             <div>
-              <button
+              <Button
+                                variant="contained"
+                                style={{backgroundColor: "hotPink", marginTop: "10px"}}
+              
                 onClick={() => {
                   setIsProduct('true');
                   localStorage.setItem("isproduct", isProduct);
@@ -97,17 +120,20 @@ export default function Question({
                 }}
               >
                 adult(30-infinty)
-              </button>
+              </Button>
             </div>
           </div>
-          <button
+          <Button
+                variant="contained"
+                style={{backgroundColor: "hotPink", marginTop: "10px"}}
+          
             onClick={() => {
               setIsFirst('true');
               localStorage.setItem("isfirst", 'true');
             }}
           >
             Back
-          </button>
+          </Button>
         </section>
       )}
     </div>

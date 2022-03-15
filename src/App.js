@@ -2,6 +2,8 @@ import React from "react";
 import Product from "./component/Product";
 import Question from "./component/Question";
 import { useState, useEffect } from "react";
+import ButtonAppBar from './component/Menubar'
+
 
 function App() {
   const [isFirst, setIsFirst] = useState(localStorage.getItem("isfirst") || 'true');
@@ -11,7 +13,9 @@ function App() {
   
 
   return (
-    <div>
+    <div >
+          <ButtonAppBar/>
+
       {isProduct === 'true' ? (
         <Product isProduct={isProduct} setIsProduct={setIsProduct} age={age} />
       ) : (

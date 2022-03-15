@@ -2,3 +2,21 @@
     background-color: hotpink !important;
 
 }
+.ButtonAppBar{
+    background-color: pink;
+}
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.back-image {
+    background-image: url("../../gifts-hero-m.jpeg");
+    
+    /* : image(<img src="pic_trulli.jpg" alt="Italian Trulli">) ; */
+  }
+  .product-image{
+      background-image: url("../../open-box.jpeg");
+     
+  }
