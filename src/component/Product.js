@@ -1,81 +1,122 @@
 import React, { useEffect, useState } from "react";
-import Button from '@mui/material/Button';
-import '../App.css';
-import RadioGroupRating from '../component/Rating';
+import Button from "@mui/material/Button";
+import "../App.css";
+import RadioGroupRating from "../component/Rating";
+import { Howl } from "howler";
 
-export default function Product({ setIsProduct,age }) {
+export default function Product({ setIsProduct, age }) {
   const [gifts, setGifts] = useState("");
-
   useEffect(() => {
-    fetch(`http://localhost:3005/gift/search?age_group=${age}`)
+    fetch(`https://gift-finder-mc.appspot.com/gift/search?age_group=${age}`)
       .then((res) => res.json())
       .then((data) => setGifts(data))
       .catch(console.error);
   }, []);
 
-  const findAnother = () =>{
-    fetch(`http://localhost:3005/gift/search?age_group=${age}`)
+  const findAnother = () => {
+    fetch(`https://gift-finder-mc.appspot.com/gift/search?age_group=${age}`)
       .then((res) => res.json())
       .then((data) => setGifts(data))
       .catch(console.error);
-
-  }
+  };
 
   setIsProduct("true");
   localStorage.setItem("isproduct", "true");
 
+  function playSound() {
+    const sound = new Howl({
+      src: [`${window.location.origin}/sounds/cha-ching.wav`],
+      html5: true,
+    });
+    sound.play();
+  }
 
-
-  
-  return (  
+  return (
     <div className="main">
+      <h1>The Perfect Gift Is ...</h1>
 
-      <h1>Suggested Gift</h1>
-      {/* <img
-        width="200"
-        src="https://i.etsystatic.com/26971380/r/il/702111/3483202701/il_1588xN.3483202701_bj16.jpg"
-        alt=""
-      /> */}
-      <div className="product-image">
+      <div>
         {gifts && (
-          <div>
-              <div key='0'>
-                <h2>
-                  <img width="150" src={gifts.product.image_url} alt=""/><br/>
-                  {gifts.product.product_name}
-                  <br/>
-                  ${gifts.product.price}
-                  <br/>  
-                  
-    <Button variant="contained" href={gifts.product.link} disableElevation>
-      Buy Now!
-    </Button> &nbsp; <Button
-                  variant="contained"
-                  style={{backgroundColor: "hotPink", marginTop: "10px"}}
-                    onClick={findAnother}
+          <div className="box">
+            <img
+              width="auto"
+              height="300px"
+              // className="productImage"
+              src={gifts.product.image_url}
+              alt=""
+            />
 
-                    
-                  >Try Another</Button>
-                  
-                  </h2>
+            <div className="product-info">
+              <div className="productName">{gifts.product.product_name}</div>
+              <div className="productPrice">${gifts.product.price}</div>
+              <Button
+                style={{
+                  backgroundColor: "gray",
+                  marginTop: "10px",
+                  width: "180px",
+                }}
+                variant="contained"
+                href={gifts.product.link}
+                target="_blank"
+                disableElevation
+                onClick={playSound}
+              >
+                Buy Now!
+              </Button>
+              &nbsp;
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: "#F1F1F1",
+                  marginTop: "10px",
+                  width: "120px",
+                  color: "black",
+                }}
+                onClick={findAnother}
+              >
+                Try Again
+              </Button>
+              <div>
+                <h5>Rate this gift</h5>
+                <RadioGroupRating />
+                <br />
+                <Button
+                  variant="contained"
+                  style={{
+                    backgroundColor: "#F1F1F1",
+                    marginTop: "10px",
+                    color: "black",
+                  }}
+                  onClick={() => {
+                    setIsProduct("false");
+                    localStorage.setItem("isproduct", "false");
+                  }}
+                >
+                  back to questions
+                </Button>
               </div>
+            </div>
           </div>
         )}
+        <div className="productDescription">
+          <p>{gifts.product && gifts.product.description ? gifts.product.description : '...'}</p>
+        </div>
       </div>
-      <h5>Rate this gift</h5>
-      <RadioGroupRating />
-      <br>
-      </br>
-      <Button
-      variant="contained"
-      style={{backgroundColor: "hotPink", marginTop: "10px"}}
-        onClick={() => {
-          setIsProduct("false");
-          localStorage.setItem("isproduct", "false");
-        }}
-      >
-        back to question page
-      </Button>
+      {/* <div>
+        <h5>Rate this gift</h5>
+        <RadioGroupRating />
+        <br />
+        <Button
+          variant="contained"
+          style={{ backgroundColor: "#F1F1F1", marginTop: "10px" }}
+          onClick={() => {
+            setIsProduct("false");
+            localStorage.setItem("isproduct", "false");
+          }}
+        >
+          back to question page
+        </Button>
+      </div> */}
     </div>
   );
 }

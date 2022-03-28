@@ -1,22 +1,70 @@
 .css-zddlty-MuiButtonBase-root-MuiButton-root {
-    background-color: hotpink !important;
+  background-color: hotpink !important;
+}
+.ButtonAppBar {
+  background-color: pink;
+}
 
+body {
+  overflow: hidden;
 }
-.ButtonAppBar{
-    background-color: pink;
-}
-.main{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 .back-image {
-    background-image: url("../../gifts-hero-m.jpeg");
-    
-    /* : image(<img src="pic_trulli.jpg" alt="Italian Trulli">) ; */
-  }
-  .product-image{
-      background-image: url("../../open-box.jpeg");
-     
-  }
+  background-image: url("../../gifts-hero-m.jpeg");
+  height: 1000px;
+  background-position: right;
+  background-repeat: no-repeat;
+
+  /* : image(<img src="pic_trulli.jpg" alt="Italian Trulli">) ; */
+}
+.product-image {
+  background-image: url("../../open-box.jpeg");
+  /* height: 1000px; */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.questionBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.questionBar {
+  width: 200px;
+}
+
+/* .productImage{
+    object-fit: cover;
+  } */
+
+.productName {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
+}
+
+.productPrice {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: lighter;
+}
+
+.box {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.productDescription {
+    width: 350px;
+}
+
+.product-info{
+    padding-left: 65px;
+}
